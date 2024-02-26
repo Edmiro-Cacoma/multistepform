@@ -12,31 +12,58 @@
 <body>
     <main>
         <form action="" class="form-container">
-            <h1 class="form-title">Register</h1>
-            <div class="input-container">
-                <label for="name">Name</label>
-                <input id="name" type="text" placeholder="enter your name" class="input-name">
+            <div class="step step-one">
+                <h1 class="form-title">Register</h1>
+                <div class="input-container">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="enter your name" class="input-name">
+                </div>
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="example@example.com" class="input-email">
+                </div>
+                <p id="alert" class="warningParagraph"></p>
             </div>
-            <div class="input-container">
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="example@example.com" class="input-email">
+            <div class="step step-two">
+                <h1 class="step-two-title">Which topics you are interested in?</h1>
+                <div class="step-two-btn">Software Development</div>
+                <div class="step-two-btn">User Experience</div>
+                <div class="step-two-btn">Graphic Design</div>
+
             </div>
-       <button class="btn-submit" id="btn-submit">
-        continue
-       </button>
-       <p id="alert" class="warningParagraph"></p>
+
+            <div class="step step-three">
+                <h1>Summary</h1>
+                <div>
+                    <p>Name: <span id="summary-emailName"></span></p>
+                    <p>Email: <span id="summary-email"></span></p>
+                </div>
+                <div>
+                    <h2>Topics</h2>
+                    <ul>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <button class="btn-submit" id="btn-submit">
+                continue
+            </button>
+
         </form>
 
         <div class="dots">
-            <span>step 1 of 3</span>
-        <div class="outer-dot active">
+            <span><span id="step-number">1</span> of 3</span>
+            <div class="outer-dot active">
 
-        </div>
-        <div class="outer-dot">
-       
-        </div>
-        <div class="outer-dot">
-        </div>
+            </div>
+            <div class="outer-dot" id="second-dot">
+
+            </div>
+            <div class="outer-dot" id="third-dot">
+            </div>
         </div>
     </main>
 
