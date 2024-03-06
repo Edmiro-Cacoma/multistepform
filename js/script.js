@@ -1,81 +1,88 @@
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
 const emptyInput = document.createElement("span");
 const warningParagraph = document.getElementById("alert");
+const steps = document.querySelectorAll(".step");
+const nextBtn = document.querySelector("#nextBtn");
+let currentStep = 0;
 
 function validateEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
 
-function toggleOptionSelection(option) {
-  option.classList.toggle("selected");
-  if (option.classList.contains("selected")) {
-    option.style.color = "#E5E7EB";
-    option.style.backgroundColor = "#652CD1";
-  } else {
-    option.style.color = "";
-    option.style.backgroundColor = "";
+function addDots() {
+  const stepNumberElement = document.querySelector("#step-number");
+  const stepDots = document.querySelectorAll(".dot");
+
+  const updatedStepNumber = currentStep + 1;
+  stepNumberElement.textContent = `${updatedStepNumber}`;
+
+  stepDots[currentStep].classList.add("activeDot");
+}
+
+function updateContent() {
+  const summaryName = document.getElementById("summary-emailName");
+  const summaryEmail = document.getElementById("summary-email");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+
+  if (currentStep === 1) {
+    const stepTwoBtn = document.querySelectorAll(".step-two-option");
+    const summaryList = document.querySelector(".summaryUl");
+
+    stepTwoBtn.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const buttonContent = btn.textContent;
+
+        const listItem = document.createElement("li");
+        listItem.textContent = buttonContent;
+        summaryList.appendChild(listItem);
+      });
+    });
+  } else if (currentStep === 2) {
+    summaryName.textContent = nameInput.value;
+    summaryEmail.textContent = emailInput.value;
   }
+
+  addDots();
 }
 
-const stepTwoOptions = document.querySelectorAll(".step-two-btn");
-
-stepTwoOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    toggleOptionSelection(option);
-  });
-});
-
-function summaryUser() {
-  document.getElementById("summary-emailName").textContent = nameInput.value;
-  document.getElementById("summary-email").textContent = emailInput.value;
-}
-
-function addDots(step) {
-  const stepNumber = document.getElementById("step-number");
-
-  stepNumber.textContent = step;
-
-  for (let i = 1; i <= step; i++) {
-    const dot = document.getElementById(`dot-${i}`);
-    if (dot) {
-      dot.classList.add("active");
-    }
-  }
-}
- const currentStep = "translateX(-1000%)";
-;
-function changeContent(step) {
-  // Translate the current step out of the screen
-  document.querySelector(`.step-${step}`).style.transform = currentStep;
-
-  // Translate the next step into the screen
-  const nextStep = step + 1;
-  document.querySelector(`.step-${nextStep}`).style.transform =
-    "translateX(0%)";
-
-  // Update the step number in the dots
-  document.getElementById("step-number").textContent = nextStep;
-}
-
-document.getElementById("btn-submit").addEventListener("click", (event) => {
-  event.preventDefault();
+function handleNextStep() {
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
 
   if (nameInput.value.trim() === "" && emailInput.value.trim() === "") {
-    return (emptyInput.textContent = "Fill the fields above please");
+    warningParagraph.textContent = "Fill the fields above please";
+    warningParagraph.style.display = "block";
+    return;
   } else if (nameInput.value && emailInput.value.trim() === "") {
-    return (emptyInput.textContent = "Fill the empty field");
+    warningParagraph.textContent = "Fill the empty field";
+    warningParagraph.style.display = "block";
+    return;
   } else if (nameInput.value.trim() === "" && emailInput.value) {
-    return (emptyInput.textContent = "Fill the empty field");
+    warningParagraph.textContent = "Fill the empty field";
+    warningParagraph.style.display = "block";
+    return;
   } else if (!validateEmail(emailInput.value)) {
-    return (emptyInput.textContent = "Invalid email format");
-  } else {
-    changeContent(1);
-    summaryUser();
+    warningParagraph.textContent = "Invalid email format";
+    warningParagraph.style.display = "block";
+    return;
   }
-});
+
+  warningParagraph.textContent = "";
+
+  steps[currentStep].style.display = "none";
+  currentStep++;
+  steps[currentStep].style.display = "block";
+
+  if (currentStep === steps.length - 1) {
+    nextBtn.style.display = "none";
+  }
+
+  updateContent();
+}
 
 warningParagraph.textContent = "";
 warningParagraph.appendChild(emptyInput);
-warningParagraph.style.display = "block";
+warningParagraph.style.display = "none";
+nextBtn.addEventListener("click", handleNextStep);

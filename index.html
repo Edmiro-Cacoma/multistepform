@@ -12,7 +12,7 @@
 <body>
     <main>
         <form action="" class="form-container">
-            <div class="step step-one">
+            <div class="step" id="step-1">
                 <h1 class="form-title">Register</h1>
                 <div class="input-container">
                     <label for="name">Name</label>
@@ -22,33 +22,48 @@
                     <label for="email">Email</label>
                     <input id="email" type="email" placeholder="example@example.com" class="input-email">
                 </div>
-                <p id="alert" class="warningParagraph"></p>
+                <p id="alert" class="warningParagraph">aa</p>
             </div>
-            <div class="step step-two">
+
+            <div class="step hidden ">
                 <h1 class="step-two-title">Which topics you are interested in?</h1>
-                <div class="step-two-btn">Software Development</div>
-                <div class="step-two-btn">User Experience</div>
-                <div class="step-two-btn">Graphic Design</div>
 
-            </div>
+                <div class="step-two-options">
 
-            <div class="step step-three">
-                <h1>Summary</h1>
-                <div>
-                    <p>Name: <span id="summary-emailName"></span></p>
-                    <p>Email: <span id="summary-email"></span></p>
-                </div>
-                <div>
-                    <h2>Topics</h2>
-                    <ul>
-
-                    </ul>
+                    <div class="step-two-option">
+                        Software Development
+                    </div>
+                    <div class="step-two-option">
+                        User Experience
+                    </div>
+                    <div class="step-two-option">
+                        Graphic Design
+                    </div>
                 </div>
 
 
             </div>
 
-            <button class="btn-submit" id="btn-submit">
+            <div class="step hidden" >
+                <h1 class="summaryTitle">Summary</h1>
+                <div class="step-3">
+                    <div>
+                        <p class="summaryPara">Name: <span id="summary-emailName" class="summaryStyle"></span></p>
+                        <p class="summaryPara">Email: <span id="summary-email" class="summaryStyle"></span></p>
+                    </div>
+                    <div>
+                        <h2 class="summaryTopic">Topics</h2>
+                        <ul class="summaryUl" id="summaryUl">
+                    
+                        </ul>
+                    </div>
+
+                </div>
+              
+
+            </div>
+
+            <button class="btn-submit" type="button" id="nextBtn">
                 continue
             </button>
 
@@ -56,13 +71,11 @@
 
         <div class="dots">
             <span><span id="step-number">1</span> of 3</span>
-            <div class="outer-dot active">
-
+            <div class="dot activeDot">
             </div>
-            <div class="outer-dot" id="second-dot">
-
+            <div class="dot">
             </div>
-            <div class="outer-dot" id="third-dot">
+            <div class="dot">
             </div>
         </div>
     </main>

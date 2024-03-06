@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-
-
 :root {
     --main-bg: linear-gradient(to bottom right, #652CD1 -190%, #121826 75%, #652CD1 190%);
     --title: #E5E7EB;
@@ -11,7 +9,6 @@
     --btn-bg: linear-gradient(#845EEE, #652CD1);
 
 }
-
 
 body,
 h1,
@@ -40,7 +37,6 @@ body {
     color: #cbd5e1;
     font-family: 'Sora', sans-serif;
     line-height: 1.5;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,19 +52,18 @@ main {
 .form-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     width: 420px;
     height: 450px;
     border: 0.125rem solid var(--label);
     background-color: var(--form-bg);
     border-radius: 15px;
-    padding: 1.5rem;
+
 }
 
 .form-container .form-title {
-    position: relative;
-    top: -25px;
     font-size: 1.25rem;
     color: var(--title);
 }
@@ -77,10 +72,11 @@ main {
     display: flex;
     justify-content: start;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .form-container label {
+    margin-top: 1rem;
     font-size: 0.875rem;
 }
 
@@ -88,7 +84,6 @@ main {
     width: 350px;
 }
 
-.step-two-btn,
 .input-container input {
     width: 100%;
     background: transparent;
@@ -101,10 +96,7 @@ main {
 }
 
 .form-container .btn-submit {
-    position: relative;
-    top: 60px;
-    margin: 0 auto;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
     background: var(--btn-bg);
     color: var(--title);
     font-size: 1rem;
@@ -116,9 +108,17 @@ main {
 }
 
 .form-container .warningParagraph {
-    margin: 0 auto;
-    color: var(--title);
+    display: block;
+    text-align: center;
+    color: red;
     font-size: 1rem;
+    margin-top: 1rem;
+}
+
+#step-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .dots {
@@ -128,69 +128,117 @@ main {
     display: flex;
     align-items: center;
     gap: 0.875rem;
-
 }
 
 .dots span {
     color: var(--placeholder);
 }
 
-.outer-dot {
+.dots .dot {
     background-color: var(--placeholder);
     width: 15px;
     height: 15px;
     border-radius: 50%;
-
 }
 
-.outer-dot.active {
+.dot.activeDot {
     background-color: #845EEE;
 }
 
-.step-one {
-    top: 180px;
-    position: absolute;
-    display: flex;
-    gap: 0.875rem;
-    align-items: start;
-    justify-content: start;
-    flex-direction: column;
-    width: 350px;
+.summaryPara {
+    color: #A1A1A9;
+}
+
+.summaryStyle {
+    color: #E5E7EB;
+}
+
+.summaryTopic {
+    color: #A1A1A9;
+}
+
+.summaryUl {
+    color: #E5E7EB;
+}
+
+#step-1 {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }
 
 
-.step-two {
+.step-two-options {
     display: flex;
-    align-items: center;
     flex-direction: column;
     gap: 1rem;
-    transform: translateX(1000%);
 }
 
 .step-two-title {
-    font-size: 1.25rem;
-    color: var(--title);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
 }
 
-.step-two-btn {
-    color: var(--label);
-    font-size: 0.875rem;
-    background-color: var(--placeholder);
-}
 
-.step-two-btn:hover {
-    color: var(--title);
-    font-size: 1rem;
-    background-color: #652CD1;
-}
-
-.step-three {
-    top: 160px;
-    position: absolute;
+.step-two-option {
     display: flex;
-    gap: 0.875rem;
-    align-items: start;
     justify-content: start;
     flex-direction: column;
-    transform: translateX(1000%);
+    gap: 1rem;
+    width: 100%;
+    background: var(--placeholder);
+    color: var(--title);
+    outline: none;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 0.175rem solid var(--label);
+    cursor: pointer;
+}
+
+.step-two-option.active {
+    background-color: #845EEE;
+    color: var(--title);
+    border-radius: 15px;
+}
+
+
+.summaryTitle {
+    position: relative;
+    top: -30px;
+    right: 60px;
+    margin: 10px;
+}
+
+.step-3 div {
+    position: relative;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+
+}
+
+.step-3 div p {
+    position: relative;
+    right: 20px;
+    top: -20px;
+
+}
+
+.step-3 div h2 {
+    position: relative;
+    right: 30px;
+    margin: 10px;
+}
+
+.step-3 div ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 0.5rem;
+
 }
